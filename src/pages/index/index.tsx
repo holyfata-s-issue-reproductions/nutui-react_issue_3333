@@ -1,38 +1,48 @@
-import { Uploader, Cell } from '@nutui/nutui-react-taro'
-import { Dongdong } from '@nutui/icons-react-taro'
+import {
+  Uploader,
+  Cell,
+  Space,
+} from "@nutui/nutui-react-taro";
+import Taro from "@tarojs/taro";
 
 const Demo1 = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const onStart = () => {
-    console.log('start触发')
+  const demoUrl =
+    "https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif";
+
+  async function upload(file: File) {
+    return new Promise<{
+      url: string;
+    }>((resolve) => {
+      Taro.uploadFile({
+        url: 'http://127.0.0.1:3000/fileUpload',
+        // @ts-ignore
+        filePath: file.tempFilePath,
+        name: 'file',
+        success (res){
+          console.log("@hf: uploadFile res", res);
+          resolve({ url: res.data });
+        },
+        fail (err) {
+          console.error("@hf: uploadFile err", err);
+          resolve({ url: demoUrl });
+        },
+      })
+    })
   }
-  const beforeUpload = async (files: File[]) => {
-    console.log('beforeUpload')
-    const allowedTypes = ['image/png']
-    const filteredFiles = Array.from(files).filter((file) =>
-      allowedTypes.includes(file.type)
-    )
-    return filteredFiles
-  }
+
   return (
-    <Cell style={{ flexWrap: 'wrap' }}>
-      <Uploader
-        url={uploadUrl}
-        onStart={onStart}
-        beforeUpload={beforeUpload}
-        style={{
-          marginInlineEnd: '10px',
-          marginBottom: '10px',
-        }}
-      />
-      <Uploader
-        url={uploadUrl}
-        uploadLabel="商品主图"
-        onStart={onStart}
-        style={{ marginInlineEnd: '10px' }}
-      />
-      <Uploader url={uploadUrl} uploadIcon={<Dongdong />} onStart={onStart} />
-    </Cell>
-  )
-}
-export default Demo1
+    <>
+      <Cell style={{ flexWrap: "wrap" }}>
+        <Space wrap>
+          <Uploader
+            upload={(file: File) => upload(file)}
+            onChange={(files) => {
+              console.log("@hf: onChange", files);
+            }}
+          />
+        </Space>
+      </Cell>
+    </>
+  );
+};
+export default Demo1;

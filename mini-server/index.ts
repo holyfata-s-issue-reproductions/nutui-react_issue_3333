@@ -8,6 +8,7 @@ const app = express();
 
 app.use(cors());
 app.use(multer({ dest: "./tmp/" }).any());
+app.use(express.static('tmp'));
 
 app.get("/", (_req: Request, res: Response) => {
   res.sendFile(__dirname + "/index.html");
@@ -25,7 +26,7 @@ app.post("/fileUpload", (req: Request, res: Response) => {
     if (err) {
       res.send(err);
     } else {
-      res.send("upload successfully");
+      res.send(`http://127.0.0.1:3000/${filename.replace('tmp\\', '')}`);
     }
   });
 });
