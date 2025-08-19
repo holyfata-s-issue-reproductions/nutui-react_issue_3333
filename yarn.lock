@@ -1676,10 +1676,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nutui/icons-react-taro@^3.0.2-beta.3":
-  version "3.0.2-beta.3"
-  resolved "https://registry.yarnpkg.com/@nutui/icons-react-taro/-/icons-react-taro-3.0.2-beta.3.tgz#277982574943d04fe117226525fa18f877a3dc0e"
-  integrity sha512-yEOrGdLBgPxHaNalphoKHZEBGIqNsBZmObosiVDK1NZZcg/fA7e+m0c5Qtf2g+j9FKUebUpDVL3APSG6ROqqbw==
+"@nutui/icons-react@^3.0.2-beta.5":
+  version "3.0.2-beta.5"
+  resolved "https://registry.npmjs.org/@nutui/icons-react/-/icons-react-3.0.2-beta.5.tgz#af9ace3fc282ebd78dd00f33cd75005c645c7ac7"
+  integrity sha512-V822q4Q2Refx/PvyBA+W8lZWXhwl+ZpNbqtorckqS7FZaKi5yKY94bd8iwO/U+Q60pUdHPzjScrGMpmZPGTeFQ==
 
 "@nutui/jdesign-icons-react-taro@1.0.6-beta.2":
   version "1.0.6-beta.2"
@@ -1691,13 +1691,13 @@
   resolved "https://registry.yarnpkg.com/@nutui/lottie-miniprogram/-/lottie-miniprogram-1.0.2.tgz#b26c5801f6b21dd2156b1f93e51a9be8993768e5"
   integrity sha512-6xV+uW8VK1hT8QfjqfNlURTiQijb/dEEl/AeOudMwOB55Fr2+TdxoOAks5d8vnYBTYDZyOUlcsGNgoAkXKz8Qg==
 
-"@nutui/nutui-react-taro@^3.0.18":
+"@nutui/nutui-react@^3.0.18":
   version "3.0.18"
-  resolved "https://registry.yarnpkg.com/@nutui/nutui-react-taro/-/nutui-react-taro-3.0.18.tgz#e23290ed730cfdd2ad21cbae94a9c4f250b4b8ce"
-  integrity sha512-qDDP92eat3CwfCsvvWt+MYwjN4Sh/J+q4fiq/a5WWSgWEn9BROujctuqymPch3K0vBWRfCPpnNPGO9+JVqjdeQ==
+  resolved "https://registry.npmjs.org/@nutui/nutui-react/-/nutui-react-3.0.18.tgz#70633579d192f200ea727e53a8c97cbfb9752b93"
+  integrity sha512-tLy9RwVHiudrmK+knSl8I/JZIN9RKaO6RNux10Nsa4/TlPOk9fcLVReHMi6rL2Jf6vRlGJoZH8/j5+uvEeJ97w==
   dependencies:
     "@babel/runtime" "^7.23.9"
-    "@nutui/icons-react-taro" "^3.0.2-beta.3"
+    "@nutui/icons-react" "^3.0.2-beta.5"
     "@nutui/jdesign-icons-react-taro" "1.0.6-beta.2"
     "@nutui/lottie-miniprogram" "^1.0.2"
     "@nutui/touch-emulator" "^1.0.0"

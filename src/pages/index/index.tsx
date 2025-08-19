@@ -1,7 +1,7 @@
-import { Uploader } from "@nutui/nutui-react-taro";
+import { Uploader } from "@nutui/nutui-react";
 import Taro from "@tarojs/taro";
 import { useState } from "react";
-import { Plus } from "@nutui/icons-react-taro";
+import { Plus } from "@nutui/icons-react";
 
 const Demo1 = () => {
   const demoUrl =
@@ -14,20 +14,24 @@ const Demo1 = () => {
     return new Promise<{
       url: string;
     }>((resolve) => {
-      Taro.uploadFile({
-        url: "http://127.0.0.1:3000/fileUpload",
-        // @ts-ignore
-        filePath: file.tempFilePath,
-        name: "file",
-        success(res) {
-          console.log("@hf: uploadFile res", res);
-          resolve({ url: res.data });
-        },
-        fail(err) {
-          console.error("@hf: uploadFile err", err);
-          resolve({ url: demoUrl });
-        },
-      });
+      try {
+        Taro.uploadFile({
+          url: "http://127.0.0.1:3000/fileUpload",
+          // @ts-ignore
+          filePath: file.tempFilePath,
+          name: "file",
+          success(res) {
+            console.log("@hf: uploadFile res", res);
+            resolve({ url: res.data });
+          },
+          fail(err) {
+            console.error("@hf: uploadFile err", err);
+            resolve({ url: demoUrl });
+          },
+        });
+      } catch (error) {
+        console.error(error);
+      }
     });
   }
 
@@ -44,11 +48,12 @@ const Demo1 = () => {
 
       <p>上传文件：{fileUrl}</p>
       <Uploader
-        accept='*'
-        previewType='list'
+        accept="*"
+        previewType="list"
         preview={false}
         upload={async (file: File) => {
-          return upload(file);
+          return { url: demoUrl };
+          // return upload(file);
         }}
         onChange={(files) => {
           console.log("@hf: onChange", files);
